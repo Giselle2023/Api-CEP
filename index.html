@@ -12,25 +12,42 @@
     </style>
 </head>
 <body>
-    
-    <div>
-    <h2>Informação apartir do Cep</h2>
-        <div>
-            <input type="search" name="" id="input">
-            <button>Pesquisar</button>
-        </div>
-</div>
+   <section>
+       
+       <div>
+           <h2>Informação apartir do Cep</h2>
+           <div>
+               <input type="search" name="" id="input" minlength="8" pattern="/d{5}-//d{4}/" maxlength="8">
+               <button>Pesquisar</button>
+           </div>
+       
+       </div>
+       <div class="main">
+           <span class="infos">
+              <strong>Estado :</strong>
+              <p id="estado"></p>
+          </span>
+           <span class="infos">
+               <strong>Bairro :</strong>
+               <p id="bairro"></p>
+           </span>
+           <span class="infos">
+               <strong>Cep :</strong>
+               <p id="cep"></p>
+           </span>
+           <span class="infos">
+               <strong>Rua :</strong>
+               <p id="rua"></p>
+           </span>
+           <span class="infos">
+               <strong>DDD :</strong>
+               <p id="ddd"></p>
+           </span>
+       
+       </div>
+   </section>
 
     <script src="script.js"></script>
-<!--
-    <div class="container">
-        <p id="bairro">Bairro :</p>
-        <p id="estado">Estado :</p>
-        <p id="ddd">DDD :</p>
-        <p id="logradouro">Logradouro :</p>
-        <p id="cep">Cep :</p>
 
-    </div>
--->
 </body>
 </html>

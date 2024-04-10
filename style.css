@@ -2,7 +2,6 @@
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     font-family: "Open Sans", sans-serif;
 
 }
@@ -14,6 +13,7 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: black;
     background-color: rgb(233, 240, 250);
 }
 
@@ -34,7 +34,12 @@ button{
     cursor: pointer;
 }
 
-.container{
-    width: 650px;
-    margin: auto;
+.infos{
+    display: flex;
+    gap: .5rem;
+}
+
+.main{
+    display: none;
+    margin-top: 1rem;
 }

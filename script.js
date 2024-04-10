@@ -1,39 +1,47 @@
 
 const input = document.querySelector('input');
+const content = document.querySelector('.main');
 
-function buscarCep(){
 
-    const cepInput = input.value;
-    const url = `https://viacep.com.br/ws/${cepInput}/json/`;
 
-    const container = document.createElement('div')
+function buscarCep(value){    
+    const url = `https://viacep.com.br/ws/${value}/json/`;
     
-
-
-    if(cepInput == ''){
-        return
-    }
-
-
-    fetch(url).then(response => response.json())
+  const result =  fetch(url).then(response => response.json())
     .then(data =>{
-        container.innerHTML = `
-        <br>
-        <strong>Cep</strong>: ${data.cep} <br>
-        <strong>Estado</strong>: ${data.uf} <br>
-        <strong>Localidade:</strong>: ${data.localidade} <br>
-        <strong>Bairro</strong>: ${data.bairro} <br>
-        <strong>Logradouro</strong>: ${data.logradouro} <br>
-        <strong>DDD</strong>: ${data.ddd} <br>
+        
+        return data
 
-        `
     })
- 
- document.body.appendChild(container)
+    
+    return result
 
 }
 
 
-document.querySelector('button').addEventListener('click',()=>{
-    buscarCep()
+document.querySelector('button').addEventListener('click', async ()=>{
+  
+    const result = await buscarCep(input.value);
+
+  if(input.value == ''){
+    return
+  }
+  if(input.value =! result.cep){
+      return  
+  }
+
+   content.style.display = 'block'
+
+  let estado = document.querySelector('#estado');
+  let bairro = document.querySelector('#bairro');
+  let cep = document.querySelector('#cep');
+  let rua = document.querySelector('#rua');
+  let ddd = document.querySelector('#ddd');
+
+  bairro.innerHTML = result.bairro;
+  estado.innerHTML = result.uf;
+  cep.innerHTML = result.cep;
+  rua.innerHTML = result.logradouro;
+  ddd.innerHTML = result.ddd;
+
 })
